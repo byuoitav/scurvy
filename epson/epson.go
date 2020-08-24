@@ -38,17 +38,18 @@ func New(address string, opts ...Option) *RandomDispatcher {
 	return &d
 }
 
-func (d *RandomDispatcher) RandomDispatch() error {
+func (d *RandomDispatcher) RandomDispatch() (string, error) {
 
 	// Always power on if the device is off
 	if !d.poweredOn {
+		cmd := "Set Power (on)"
 		err := d.device.SetPower(context.TODO(), "on")
 		if err != nil {
-			return fmt.Errorf("Error while trying to issue Set Power (on) command: %w", err)
+			return cmd, fmt.Errorf("Error while trying to issue Set Power (on) command: %w", err)
 		}
 		d.poweredOn = true
 
-		return nil
+		return cmd, nil
 	}
 
 	var err error = nil
@@ -117,11 +118,11 @@ func (d *RandomDispatcher) RandomDispatch() error {
 
 	// If an error occurred
 	if err != nil {
-		return fmt.Errorf("Error while trying to issue %s command: %w", cmd, err)
+		return cmd, fmt.Errorf("Error while trying to issue %s command: %w", cmd, err)
 	}
 
 	// Log a successful event
 	d.lastSuccessfulCommand = time.Now()
 
-	return nil
+	return cmd, nil
 }

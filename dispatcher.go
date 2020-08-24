@@ -1,5 +1,5 @@
 package scurvy
 
 type RandomDispatcher interface {
-	RandomDispatch() error
+	RandomDispatch() (msg string, err error)
 }

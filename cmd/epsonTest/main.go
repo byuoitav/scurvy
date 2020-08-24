@@ -45,11 +45,11 @@ func main() {
 	log.Printf("Starting to dispatch events to %s...", address)
 
 	for {
-		err := d.RandomDispatch()
+		cmd, err := d.RandomDispatch()
 		if err != nil {
 			log.Printf("Dispatch error!: %s", err)
 		} else {
-			log.Printf("Dispatch successful!")
+			log.Printf("Dispatch successful! Command: %s", cmd)
 		}
 
 		sleepDelay := _minimumWait + rand.Intn(_jitter)
