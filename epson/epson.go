@@ -46,6 +46,7 @@ func (d *RandomDispatcher) RandomDispatch() error {
 		if err != nil {
 			return fmt.Errorf("Error while trying to issue Set Power (on) command: %w", err)
 		}
+		d.poweredOn = true
 
 		return nil
 	}
@@ -99,6 +100,15 @@ func (d *RandomDispatcher) RandomDispatch() error {
 		}
 		cmd = fmt.Sprintf("Set Power (%s)", power)
 		err = d.device.SetPower(context.TODO(), power)
+
+		// Update poweredOn accordingly
+		if err == nil {
+			if power == "on" {
+				d.poweredOn = true
+			} else {
+				d.poweredOn = false
+			}
+		}
 
 	default: // Skip
 		cmd = "Skip"
