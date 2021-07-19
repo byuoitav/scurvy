@@ -36,18 +36,13 @@ func (l *NullLogger) Infof(format string, a ...interface{})  {}
 func (l *NullLogger) Warnf(format string, a ...interface{})  {}
 func (l *NullLogger) Errorf(format string, a ...interface{}) {}
 
-func New(username, password, address string, opts ...Option) scurvy.RandomDispatcher {
+func New(address string, opts ...Option) scurvy.RandomDispatcher {
 	d := Atlona5x2{}
 
 	// Create device
-	sw := atuhdsw52ed.AtlonaVideoSwitcher5x1{
-		Username: username,
-		Password: password,
-		Address:  address,
-		Logger:   &NullLogger{},
-	}
+	sw := atuhdsw52ed.NewAtlonaVideoSwitcher5x1(address)
 
-	d.device = &sw
+	d.device = sw
 
 	// Apply Options
 	for _, opt := range opts {
@@ -64,7 +59,7 @@ func (d *Atlona5x2) RandomDispatch() (string, error) {
 	var cmd string
 
 	// Random dispatch
-	switch rand.Intn(5) {
+	switch rand.Intn(7) {
 	case 0: // Get Volume
 		cmd = "Get Volume"
 		_, err = d.device.Volumes(context.TODO(), []string{"block"})
@@ -82,6 +77,18 @@ func (d *Atlona5x2) RandomDispatch() (string, error) {
 		input := _INPUTS[rand.Intn(len(_INPUTS))]
 		cmd = fmt.Sprintf("Set Input (%s)", input)
 		err = d.device.SetAudioVideoInput(context.TODO(), "OUT", input)
+
+	case 4: // Get Mutes
+		cmd = "Get Mute"
+		_, err = d.device.Mutes(context.TODO(), []string{"block"})
+
+	case 5: // Set Mute
+		mute := false
+		if rand.Intn(2) == 0 {
+			mute = true
+		}
+		cmd = "Set Mute"
+		err = d.device.SetMute(context.TODO(), "block", mute)
 
 	default: // Skip
 		cmd = "Skip"

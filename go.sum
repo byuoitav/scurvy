@@ -3,6 +3,8 @@ github.com/byuoitav/atlona v0.1.6 h1:NZaXd4uOo+15kbkI+6L7MmAPqnzZr8anEIL+l+soht4
 github.com/byuoitav/atlona v0.1.6/go.mod h1:H323w6FDvUDUAf270ux84gdnAivlzxddKK5eXU5eLGc=
 github.com/byuoitav/atlona v0.1.7 h1:joxuSBJPQXCE+JJPKSEZNrX97+hpyuZrubSfjaeQh48=
 github.com/byuoitav/atlona v0.1.7/go.mod h1:uGPD/c2qFfUdExcKDoPy8e5VMq41QfLgmwcW6VqckKA=
+github.com/byuoitav/atlona v0.1.8 h1:Urjq676Q/TQD9nOJe3/UJ8mPBEsQnvWRdw9drZMS1j0=
+github.com/byuoitav/atlona v0.1.8/go.mod h1:uGPD/c2qFfUdExcKDoPy8e5VMq41QfLgmwcW6VqckKA=
 github.com/byuoitav/connpool v0.4.1 h1:pYqy5iEWY18Hwub+q9wuJgzIzRA4263s9UkjQbC0x2k=
 github.com/byuoitav/connpool v0.4.1/go.mod h1:9jVn2IL91Wp6eHEymqxZ5v7zPy07FtIWp/JIfDCMGQY=
 github.com/byuoitav/epson-driver v0.1.2 h1:YIkMUIEomHC6zpaUiLwAqJTSRE/cWYu1WwDCAtQ7PBM=
