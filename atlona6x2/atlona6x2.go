@@ -13,12 +13,25 @@ import (
 var _BLOCKS = []string{
 	"zoneOut1",
 	"zoneOut2",
+}
+
+/*
+var _BLOCKS = []string{
+	"zoneOut1",
+	"zoneOut2",
 	"zoneOut1Analog",
 	"zoneOut2Analog",
 	"zoneOut1Digital",
 	"zoneOut2Digital",
 }
+*/
 
+var _MUTES = []string{
+	"zoneOut1",
+	"zoneOut2",
+}
+
+/*
 var _MUTES = []string{
 	"zoneOut1",
 	"zoneOut2",
@@ -27,7 +40,7 @@ var _MUTES = []string{
 	"zoneOut1Digital",
 	"zoneOut2Digital",
 }
-
+*/
 var _INPUTS = []string{
 	"1",
 	"2",
