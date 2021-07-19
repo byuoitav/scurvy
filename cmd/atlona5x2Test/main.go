@@ -19,13 +19,9 @@ const _minimumWait = 30
 func main() {
 
 	var (
-		username string
-		password string
-		address  string
+		address string
 	)
 
-	pflag.StringVarP(&username, "username", "u", "", "The username for the atlona 5x2")
-	pflag.StringVarP(&password, "password", "p", "", "The password for the atlona 5x2")
 	pflag.StringVarP(&address, "address", "a", "", "The address of the switcher to test")
 
 	pflag.Parse()
@@ -38,7 +34,7 @@ func main() {
 	// Seed the random number generator
 	rand.Seed(time.Now().UnixNano())
 
-	d := atlona5x2.New(username, password, address)
+	d := atlona5x2.New(address)
 
 	log.Printf("Starting to dispatch events to %s...", address)
 
